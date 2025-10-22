@@ -1,0 +1,13 @@
+## **📁 FILE STRUCTURE FOR AWS**
+
+Create this structure in your Jupyter environment:
+```
+/home/ec2-user/SageMaker/golden_universality/
+├── corrected_golden_wolff.py           # Artifact #1 (MAIN)
+├── comprehensive_report_system.py       # Artifact #2 (REPORTING)
+├── golden_universality_analysis.py      # Artifact #3 (VALIDATION)
+├── master_pipeline.py                   # Integration script above
+├── logs/                                # Auto-created
+├── checkpoints/                         # Auto-created
+├── reports/                             # Auto-created
+└── datasets/                            # Auto-created

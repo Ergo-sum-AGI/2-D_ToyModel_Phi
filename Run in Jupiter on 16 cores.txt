@@ -1,0 +1,106 @@
+******************** 
+Full AWS Run Command
+********************
+python# In Jupyter notebook (ml.m5.4xlarge)
+
+*****************************
+# Install progress bars first
+*****************************
+!pip install rich
+
+# Run corrected analysis
+from corrected_golden_wolff import run_corrected_golden_analysis
+
+results = run_corrected_golden_analysis(
+    LS=[256, 512, 1024, 1536],  # Large lattices
+    n_cores=16,                  # Use all vCPUs
+    resume=False                 # Fresh start
+)
+
+*************************
+# If interrupted, resume:
+*************************
+results = run_corrected_golden_analysis(
+    LS=[256, 512, 1024, 1536],
+    n_cores=16,
+    resume=True  # ← Picks up where it left off
+).
+************
+Manual Stop
+************
+python# In Jupyter cell:
+# Press "Stop" button or Ctrl+C
+
+# Results are auto-saved!
+# Resume anytime:
+results = run_corrected_golden_analysis(
+    LS=[256, 512, 1024],
+    resume=True
+)
+
+Scenario 3: Check Progress Offline
+pythonfrom corrected_golden_wolff import CheckpointManager
+
+mgr = CheckpointManager()
+checkpoints = mgr.list_checkpoints(L=1024)
+
+print(f"Found {len(checkpoints)} checkpoints:")
+for block, timestamp in checkpoints:
+    print(f"  Block {block}: {datetime.fromtimestamp(timestamp)}")
+```
+
+## **📈 Live Monitoring (Rich Console)**
+
+If you have `rich` installed, you see:
+```
+╔════════════════════════════════════════════════════════╗
+║ CORRECTED GOLDEN UNIVERSALITY ANALYSIS                 ║
+╠════════════════════════════════════════════════════════╣
+║ Lattices: [256, 512, 1024, 1536]                       ║
+║ Cores: 16                                              ║
+║ Target: η = φ/2 = 0.809017                             ║
+╚════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────┐
+│ ⠸ L=1024 | η=0.8107 ━━━━━━━━━━━━━━━━╺━━ 81%          │
+│   Elapsed: 1:23:45  Remaining: 0:17:32               │
+└──────────────────────────────────────────────────────┘
+
+[L=1024] Block 13/16 complete
+  η_current = 0.8107 ± 0.0065
+  ⟨s⟩ = 7234 (max: 145821)
+  Cluster fraction: 0.0069
+  Checkpoint: checkpoints/L1024_block12.pkl ✓
+```
+
+### **Without Rich** (fallback):
+```
+[L=1024] Block 13/16 (81%)
+  η = 0.8107 ± 0.0065
+  ⟨s⟩ = 7234
+  Time: 1:23:45 / ~1:41:17
+
+*****************
+FOR MORE RESULTS:
+*****************
+1. Extend to L=2048 (definitive test):
+pythonresults_large = run_corrected_golden_analysis(
+    LS=[1024, 1536, 2048],
+    n_cores=16,
+    resume=False
+)
+
+# If η_2048 = 0.8090 ± 0.0005 → CONFIRMED ✓✓✓
+
+2. Scan β around β_c (RG trajectory):
+pythonbeta_range = np.linspace(0.45, 0.52, 8)
+for beta in beta_range:
+    # Measure η(β) to map critical surface
+
+3. Extract α directly (log corrections):
+python# Fit: G(r) = A × (ln r)^α / r^η
+# Confirm: α = 1/φ² = 0.382
+
+4. Measure pentagonal symmetry:
+python# Save spin configurations
+# FFT angular correlation → n=5 peak
