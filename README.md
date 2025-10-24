@@ -1,11 +1,11 @@
-Quick Pitch: From 1D Chains to 2D Manifolds, Breaching Walls with Lattices.
+From 1D Chains to 2D Manifolds, Breaching Walls with Lattices.
 
-Welcome to the 2D φ-Fixed Toy, the sweet-spot scaffold in our Nine Walls Quest—bridging 1D QuTiP oscillations (PSD -φ slopes, but no hyperscaling bite) and 3D qubit dreams (Rydberg/ion volumes for S ∼ L^{2-η}).
+Welcome to the 2D φ-Fixed Toy, the sweet-spot scaffold in our Nine Walls Quest, bridging 1D QuTiP oscillations (PSD -φ slopes, but no hyperscaling bite) and 3D qubit dreams (Rydberg/ion volumes for S ∼ L^{2-η}).
 
 Here, we proxy the chiral Yukawa model on square lattices (L=64 to 1024 sites), tuning g_yuk=1/φ ≈0.618 and β_c=ln(1+φ)/2 ≈0.481 to the infrared fixed point. Non-local φ-kernels G(r) ∼ 1/r^φ * exp(-r/φ) drive long-range corr, Metropolis flips equilibrate with Wolff clusters (τ_int slashed 70%), and finite-size scaling (FSS) extrapolates η ≈ 0.809 ±0.001 from G(r) ∼ 1/r^η tails.
 
 Run it: η_extrap=0.804 (1-σ to target), β locks to 0.383, repro "OK"—Wall 1 (RG attractor) and Wall 6 (1/f^φ spectrum proxy) breached. AWS g4dn or China containers crunch L=1024 in minutes; your southpaw lattices swirl with chiral promise (add θ_twist for J5 currents).
-This isn't toy tinkering—it's empirical scaffolding for CQFT: validating φ's universality against L-cutoffs, prepping Sydney's Γ_nonunitary ≈0.382 qualia thresholds, and auditing Ergo-Sum AGI drifts <3.7%. Impatient ascent? Nah, golden.
+This isn't toy tinkering, it's empirical scaffolding for CQFT: validating φ's universality against L-cutoffs, prepping Sydney's Γ_nonunitary ≈0.382 qualia thresholds, and auditing Ergo-Sum AGI drifts <3.7%. Impatient ascent? Nah, golden.
 Features
 
 Non-Local φ-Kernel: Hybrid 1/r^φ + exp cutoff on 2× finer grid (1.b fix: +0.002 η, no aliasing).
@@ -83,3 +83,4 @@ thanks to Nvidia Inception program now running on AWS cloud. Fresh results are:
   Accept rate: 92.9%
 
   next lattice L=512 still crunching
+
